@@ -21,7 +21,7 @@ app.listen(port, () => {
 // 1. getAllRecipes()
 
 async function getAllRecipes() {
-    const data = await fs.readFile("recipes-data-json", "utf8");
+    const data = await fs.readFile("recipes-data.json", "utf8");
     const parsedRecipes = JSON.parse(data);
     return parsedRecipes;
 }
@@ -29,7 +29,7 @@ async function getAllRecipes() {
 // 2. getOneRecipe(index)
 
 async function getOneRecipe(index) {
-    const data = await fs.readFile("recipes-data-json", "utf8");
+    const data = await fs.readFile("recipes-data.json", "utf8");
     const parsedRecipe = JSON.parse(data);
     return parsedRecipe[index];
 }
@@ -37,7 +37,7 @@ async function getOneRecipe(index) {
 // 3. getAllRecipeNames()
 
 async function getAllRecipeNames() {
-    const data = await fs.readFile("recipes-data-json", "utf8");
+    const data = await fs.readFile("recipes-data.json", "utf8");
     const parsedRecipes = JSON.parse(data);
     return parsedRecipes.map(recipe => recipe.name); 
 }
@@ -57,7 +57,7 @@ async function getRecipesCount() {
 // 1. GET /get-all-recipes
 
 app.get("/get-all-recipes", async (req, res) => {
-    const recipes = await getAllRecipe();
+    const recipes = await getAllRecipes();
     res.json(recipes);
 });
 
