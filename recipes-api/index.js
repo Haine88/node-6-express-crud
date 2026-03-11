@@ -28,6 +28,7 @@ async function getAllRecipes() {
 
 // 2. getOneRecipe(index)
 
+// it's. a function to read JSON file and return a single recipe by it's array index // 
 async function getOneRecipe(index) {
     const data = await fs.readFile("recipes-data.json", "utf8");
     const parsedRecipe = JSON.parse(data);
@@ -64,9 +65,9 @@ app.get("/get-all-recipes", async (req, res) => {
 // 2. GET /get-one-recipe/:index
 
 app.get("/get-one-recipe/:index", async (req, res) => {
-    const index = req.params.index;
-    const recipe = await getOneRecipe(index);
-    res.json(recipe);
+    const index = req.params.index; // grab the index from the URL //
+    const recipe = await getOneRecipe(index); // then fetch the recipe //
+    res.json(recipe);  // send it back as JSON 
 });
 
 // 3. GET /get-all-recipe-names
